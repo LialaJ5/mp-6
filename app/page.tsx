@@ -1,4 +1,3 @@
-import Image from "next/image";
 
 export default function Home() {
   const AUTH_GITHUB_ID = process.env.AUTH_GITHUB_ID;

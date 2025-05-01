@@ -1,8 +1,6 @@
 "use server"
 
-export default async function response1(code: string | string[] | undefined) {
-    let data_user : string[] | undefined;
-
+export default async function response(code: string | string[] | undefined) {
     const AUTH_GITHUB_ID = process.env.AUTH_GITHUB_ID;
 
     const AUTH_GITHUB_SECRET = process.env.AUTH_GITHUB_SECRET;
@@ -25,13 +23,12 @@ export default async function response1(code: string | string[] | undefined) {
             const data_bio = user_info["bio"];
             const data_p = user_info["public_repos"] === undefined ? 0 : user_info["public_repos"].toString();
             const data_follo = user_info["followers"] === undefined ? 0 : user_info["followers"].toString();
-            console.log(data_user);
             return [data_n, data_link, data_bio, data_p, data_follo];
         }
         catch (error){
             console.error("Failed to access github", error)
         }
     }
-    data_user = await data();
+    const data_user = await data();
     return data_user;
 }
